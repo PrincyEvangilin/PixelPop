@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PixelPop: pixel art maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <!-- Starting page -->
+  <section id="home" class="home">
+    <div class="home-inner">
+      <div id="sprite" class="sprite" aria-hidden="true"></div>
+      <h1 class="logo">PixelPop</h1>
+      <p class="tag">Draw pixel art and download it as a PNG.</p>
+      <p class="chip">4 tools · 24 colours · 3 grid sizes</p>
+      <button id="start" type="button" class="btn big">Start drawing</button>
+    </div>
+  </section>
+
+  <main class="app" hidden>
+    <header class="top">
+      <p class="logo">PixelPop</p>
+      <p class="sub">Draw pixel art and download it as a PNG.</p>
+    </header>
+
+    <div class="layout">
+      <section class="panel tools" aria-label="Tools">
+        <h2>Tools</h2>
+        <div class="toolgrid">
+          <button type="button" class="tool on" data-tool="draw" aria-pressed="true"><span aria-hidden="true">✏️</span>Draw</button>
+          <button type="button" class="tool" data-tool="erase" aria-pressed="false"><span aria-hidden="true">🧽</span>Erase</button>
+          <button type="button" class="tool" data-tool="fill" aria-pressed="false"><span aria-hidden="true">🪣</span>Fill</button>
+          <button type="button" class="tool" data-tool="pick" aria-pressed="false"><span aria-hidden="true">💧</span>Pick</button>
+        </div>
+
+        <h2>Grid size</h2>
+        <div class="sizes">
+          <button type="button" data-size="8" aria-pressed="false">8×8</button>
+          <button type="button" data-size="16" aria-pressed="true">16×16</button>
+          <button type="button" data-size="32" aria-pressed="false">32×32</button>
+        </div>
+
+        <label class="check"><input type="checkbox" id="optGrid" checked> Show grid</label>
+        <label class="check"><input type="checkbox" id="optMirror"> Mirror drawing</label>
+      </section>
+
+      <section class="stagewrap">
+        <div id="stage" class="stage grid-on">
+          <canvas id="cv" aria-label="Pixel art canvas"></canvas>
+        </div>
+      </section>
+
+      <section class="panel side" aria-label="Colours and actions">
+        <h2>Colours</h2>
+        <div id="palette" class="palette"></div>
+        <label class="picker"><span>Custom colour</span><input type="color" id="custom" value="#ff2e93"></label>
+        <p class="current" aria-live="polite">Current: <i id="swatch"></i><b id="hex">#ff2e93</b></p>
+
+        <h2>Actions</h2>
+        <div class="actions">
+          <button type="button" id="undo" class="btn">Undo</button>
+          <button type="button" id="redo" class="btn">Redo</button>
+          <button type="button" id="clear" class="btn ghost">Clear</button>
+          <button type="button" id="download" class="btn hot">Download PNG</button>
+        </div>
+      </section>
+    </div>
+
+    <p class="hint">Shortcuts: D draw, E erase, F fill, I pick, Ctrl+Z undo, Ctrl+Y redo.</p>
+    <div class="foot"><button id="menu" type="button" class="btn ghost">Back to menu</button></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
